@@ -31,5 +31,16 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts** that can lead to a DoS attack.
+
+- The vulnerabilities found in the **insecure.ts** module that can lead to a DoS attack are found in the logics inability to set a limit on the number of requests that can be executed in a given timeframe from a given user.
+
 2. Briefly explain how a malicious attacker can exploit them.
+
+- In the event of a DoS attack a malicious actor could employ the use of a bot created to programmatically send an overwhelming amount of requests to the application crashing the server as a result.
+In this occurrence the malicious attacker now has control whether the site is active or in a crashed state.
+
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the DoS vulnerability?
+
+- The defensive technique leveraged in the **secure.ts** module is the use of a rate limiter.
+The rate limiter sets a ceiling on the number of requests that can be sent in a given time frame and the number of requests sent from a given IP address.
+This efficiently protects the application from trying to ingest an overwhelming amount of requests in a short duration.
