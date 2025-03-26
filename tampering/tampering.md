@@ -25,5 +25,17 @@ This example demonstrates tampering through script injection.
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+
+- At the moment within the **insecure.ts** module, the application accepts any input passed via the `/register` endpoint.
+This can be seen a non-sanitizing user input leading to a litany of potential attacks on behalf of a malicious actor.
+ 
+
 2. Briefly explain how a malicious attacker can exploit them.
-3. Briefly explain why **secure.ts** does not have the same vulnerabilties?
+
+- This can be problematic as without properly handling the input from the user can lead malicious actors to injecting code directly into the application.
+  By doing this, the malicious actor can execute a for example a SQL / NoSQL injection attack which can allow the malicious actor to execute database commands without the appropriate privileges.
+
+3. Briefly explain why **secure.ts** does not have the same vulnerabilities?
+
+- In the **secure.ts** module the implementation leverages the `escapeHTML()` method which properly sanitizes the user input for any characters that are synonymous with inserting for example a malicious script.
+The method then replaces these particular characters with harmless elements in these characters appear at all. 
