@@ -31,5 +31,17 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+
+- The vulnerability displayed in the **insecure.ts** module is the user asked for their user-name the user-name is never sanitized. 
+This results in whatever the user may input as a user-name being directly sent to the database in the form of a NoSQL query. 
+
 2. Briefly explain how a malicious attacker can exploit them.
+
+- As the input from the user goes directly to the backend NoSQL database the user (if a malicious actor) can run a NoSQL injection attack on the application.
+This involves a malicious actor inserting specific NoSQL commands as input to the application allowing the malicious actor the potential ability to gain access to personally identifiable information (PII) and or other sensitive information. 
+
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the information disclosure vulnerability?
+
+- The logic provided in the **secure.ts** module does some sanitizing of the user inputted user-name. 
+The user-name inputted is checked for its data type prior to query the database.
+This user-name sanitation removes all non-alphanumeric characters in the inputted user-name which is one of many methods to guard against a NoSQL injection attack.  
